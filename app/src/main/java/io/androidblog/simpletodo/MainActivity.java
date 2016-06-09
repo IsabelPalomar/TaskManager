@@ -3,12 +3,12 @@ package io.androidblog.simpletodo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import org.apache.commons.io.*;
 
 
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
+    private final int REQUEST_CODE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
         setupListViewListener();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            String newValue = data.getExtras().getString("value");
+            String position = data.getExtras().getString("position");
+            int intPosition =  Integer.parseInt(position);
+            updateItem(intPosition, newValue);
+        }
     }
 
     private void setupListViewListener() {
@@ -50,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
-                //Log.i("ERROR", "onListItemClick id=" + id);
+                String value = (String) av.getItemAtPosition(pos);
                 Intent i = new Intent(MainActivity.this, EditItemActivity.class);
-                startActivity(i);
+                i.putExtra("position", String.valueOf(pos));
+                i.putExtra("value", value);
+                startActivityForResult(i, REQUEST_CODE);
             }
         });
 
@@ -65,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
         etNewItem.setText("");
         writeItems();
     }
+
+    private void updateItem(int index, String value){
+        items.set(index, value);
+        itemsAdapter.notifyDataSetChanged();
+        writeItems();
+    }
+
 
     private void readItems(){
         File filesDir = getFilesDir();

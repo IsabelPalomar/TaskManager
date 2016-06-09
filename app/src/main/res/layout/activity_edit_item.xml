@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnEditItem"
+        android:onClick="onSubmit"
         android:layout_below="@+id/etEditItem"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
