@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.firebase.client.Firebase;
+
 import org.apache.commons.io.*;
 
 
@@ -16,16 +18,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.androidblog.simpletodo.utils.Constants;
+
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
     private final int REQUEST_CODE = 20;
 
+    private Firebase mItemsRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mItemsRef = new Firebase(Constants.FIREBASE_URL_LIST_ITEMS);
+
         lvItems = (ListView) findViewById(R.id.lvItems);
         items = new ArrayList<>();
         readItems();

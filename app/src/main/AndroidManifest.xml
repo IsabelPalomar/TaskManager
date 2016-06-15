@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.androidblog.simpletodo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="io.androidblog.simpletodo.SimpleTodoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditItemActivity"></activity>
+        <activity android:name=".EditItemActivity" />
     </application>
 
 </manifest>
