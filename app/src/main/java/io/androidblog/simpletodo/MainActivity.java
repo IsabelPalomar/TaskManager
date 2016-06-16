@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.androidblog.simpletodo.models.Item;
 import io.androidblog.simpletodo.utils.Constants;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,10 +83,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAddItem(View view) {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
-        String itemText = etNewItem.getText().toString();
+        String itemText = etNewItem.getText().toString().trim();
         itemsAdapter.add(itemText);
+
+        if (!itemText.isEmpty()) {
+            Item toDoItem = new Item(itemText);
+            mItemsRef.push().setValue(toDoItem);
+        }
         etNewItem.setText("");
         writeItems();
+
     }
 
     private void updateItem(int index, String value){
