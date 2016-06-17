@@ -3,6 +3,8 @@ package io.androidblog.simpletodo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.firebase.client.Firebase;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
 
 import org.apache.commons.io.*;
 
@@ -18,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.androidblog.simpletodo.adapters.ItemsRecyclerAdapter;
 import io.androidblog.simpletodo.models.Item;
 import io.androidblog.simpletodo.utils.Constants;
 
@@ -27,21 +32,24 @@ public class MainActivity extends AppCompatActivity {
     ListView lvItems;
     private final int REQUEST_CODE = 20;
 
-    private Firebase mItemsRef;
+    private DatabaseReference databaseReference;
+    private FirebaseRecyclerAdapter adapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mItemsRef = new Firebase(Constants.FIREBASE_URL_LIST_ITEMS);
 
-        lvItems = (ListView) findViewById(R.id.lvItems);
-        items = new ArrayList<>();
-        readItems();
-        itemsAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, items);
-        lvItems.setAdapter(itemsAdapter);
-        setupListViewListener();
+        SimpleTodoApplication app = (SimpleTodoApplication)getApplicationContext();
+
+        databaseReference = app.getItemsReference();
+        adapter = new ItemsRecyclerAdapter(R.layout.item, databaseReference);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_items);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -84,14 +92,12 @@ public class MainActivity extends AppCompatActivity {
     public void onAddItem(View view) {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString().trim();
-        itemsAdapter.add(itemText);
 
         if (!itemText.isEmpty()) {
             Item toDoItem = new Item(itemText);
-            mItemsRef.push().setValue(toDoItem);
+            databaseReference.push().setValue(toDoItem);
         }
         etNewItem.setText("");
-        writeItems();
 
     }
 
