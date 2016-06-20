@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "io.androidblog.simpletodo"
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -17,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'UNIQUE_FIREBASE_ROOT_URL', firebaseRootUrl
-    }
 }
 
 dependencies {
@@ -28,12 +24,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'commons-io:commons-io:2.4'
 
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:design:${supportLibraryVersion}"
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
 
-    compile 'com.firebase:firebase-client-android:2.5.2+'
-    compile 'com.google.firebase:firebase-database:9.0.2'
-    compile 'com.firebaseui:firebase-ui-database:0.4.1'
+    compile "com.google.firebase:firebase-database:$rootProject.ext.firebaseDatabase"
+    compile "com.firebaseui:firebase-ui-database:$rootProject.ext.firebaseUIDatabase"
 
 }
 
