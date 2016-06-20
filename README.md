@@ -18,7 +18,7 @@ The following **required** functionality is completed:
 The following **additional** features are implemented:
 
 * [x] Persist the todo items [into Firebase](https://www.firebase.com/docs/android/guide/) instead of a text file
-* [x] Improve style of the todo items in the list [using a custom adapter] and RecyclerView(https://github.com/firebase/firebaseui-android#usage)
+* [x] Improve style of the todo items in the list using a custom adapter and [RecyclerView] (https://github.com/firebase/firebaseui-android)
 
 
 ## :video_camera: Video Walkthrough 
@@ -27,7 +27,11 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/QIj1LpA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+Using firebase:
+
+<img src='http://i.imgur.com/cRhMyNz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## :pencil2: Notes
 
