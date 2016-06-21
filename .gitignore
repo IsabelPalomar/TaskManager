@@ -8,3 +8,5 @@
 /captures
 google-services.json
 .idea
+.idea/gradle.xml
+.idea/modules.xml

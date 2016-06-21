@@ -7,16 +7,22 @@ public class Item {
     String item;
     boolean completed;
 
+    String description;
     String type;
     HashMap<String, Object> dueDate;
     HashMap<String, Object> reminder;
-    String notes;
 
 
     public Item(){ }
 
     public Item(String item) {
         this.item = item;
+        this.completed = false;
+    }
+
+    public Item(String item, String description) {
+        this.item = item;
+        this.description = description;
         this.completed = false;
     }
 
@@ -61,12 +67,12 @@ public class Item {
         this.reminder = reminder;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setDescription(String notes) {
+        this.description = description;
     }
 
 

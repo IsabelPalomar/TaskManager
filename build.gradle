@@ -35,4 +35,6 @@ ext {
     firebaseDatabase = '9.0.2'
     firebaseUIDatabase = '0.4.1'
 
+    butterknifeVersion = '7.0.1'
+
 }
