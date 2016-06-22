@@ -12,9 +12,39 @@
     tools:context="io.androidblog.simpletodo.activities.AddItemActivity"
     tools:showIn="@layout/activity_add_item">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addItem.label.category"
+        android:id="@+id/textViewCategory"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCategory"
+        android:layout_below="@+id/textViewCategory"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addItem.label.priority"
+        android:id="@+id/textViewPriority"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinnerCategory" />
 
-
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerPriority"
+        android:layout_below="@+id/textViewPriority"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
