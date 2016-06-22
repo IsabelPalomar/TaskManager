@@ -35,6 +35,7 @@ public class AddItemActivity extends AppCompatActivity {
     Spinner spinnerPriority;
 
     private DatabaseReference databaseReference;
+    private DatabaseReference categoriesReference;
 
 
     @Override
@@ -47,6 +48,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         SimpleTodoApplication app = (SimpleTodoApplication) getApplicationContext();
         databaseReference = app.getItemsReference();
+        categoriesReference = app.getCategoriesReference();
 
         setCategorySpinnerData();
         setPrioritySpinnerData();
