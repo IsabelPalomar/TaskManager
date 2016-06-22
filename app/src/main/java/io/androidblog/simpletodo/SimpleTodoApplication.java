@@ -8,6 +8,7 @@ import io.androidblog.simpletodo.utils.Constants;
 public class SimpleTodoApplication extends android.app.Application {
 
     private DatabaseReference itemsReference;
+    private DatabaseReference categoriesReference;
 
 
     @Override
@@ -16,9 +17,14 @@ public class SimpleTodoApplication extends android.app.Application {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
         itemsReference = database.getReference(Constants.FIREBASE_LOCATION_LIST_ITEMS);
+        categoriesReference = database.getReference(Constants.FIREBASE_LOCATION_LIST_CATEGORIES);
     }
 
     public DatabaseReference getItemsReference() {
         return itemsReference;
+    }
+
+    public DatabaseReference getCategoriesReference() {
+        return categoriesReference;
     }
 }
