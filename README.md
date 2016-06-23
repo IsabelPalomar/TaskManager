@@ -18,8 +18,10 @@ The following **required** functionality is completed:
 The following **additional** features are implemented:
 
 * [x] Persist the todo items [into Firebase](https://www.firebase.com/docs/android/guide/) instead of a text file
-* [x] Improve style of the todo items in the list using a custom adapter and [RecyclerView] (https://github.com/firebase/firebaseui-android)
-
+* [x] Improve style of the todo items in the list using a custom adapter and [RecyclerView](https://github.com/firebase/firebaseui-android)
+* [x] Android Folder Structure organized using [CodePath Guidelines](https://guides.codepath.com/android/Organizing-your-Source-Files)
+* [x] Using ButterKnife for field and method binding for Views. 
+* [x] Item and Category POJO's created
 
 ## :video_camera: Video Walkthrough 
 
@@ -29,9 +31,14 @@ Here's a walkthrough of implemented user stories:
 
 Using firebase:
 
-<img src='http://i.imgur.com/cRhMyNz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/cRhMyNz.gif' title='Video Walkthrough Firebase' width='' alt='Video Walkthrough' />
+
+New screen to add Items:
+
+<img src='http://i.imgur.com/ChZJrk2.gif' title='Video Walkthrough screen add items' width='' alt='Video Walkthrough' />
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
+
 
 ## :pencil2: Notes
 
