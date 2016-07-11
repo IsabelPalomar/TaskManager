@@ -4,7 +4,7 @@
 
 Submitted by: **Isabel Palomar**
 
-Time spent: **4.5** hours spent in total
+Time spent: **5** hours spent in total
 
 ## :sunglasses: User Stories
 
