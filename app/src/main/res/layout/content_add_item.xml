@@ -13,38 +13,38 @@
     tools:showIn="@layout/activity_add_item">
 
     <TextView
+        android:id="@+id/textViewCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addItem.label.category"
-        android:id="@+id/textViewCategory"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/addItem.label.category" />
 
     <Spinner
+        android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerCategory"
-        android:layout_below="@+id/textViewCategory"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewCategory" />
 
 
     <TextView
+        android:id="@+id/textViewPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addItem.label.priority"
-        android:id="@+id/textViewPriority"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinnerCategory" />
+        android:layout_below="@+id/spinnerCategory"
+        android:text="@string/addItem.label.priority" />
 
     <Spinner
+        android:id="@+id/spinnerPriority"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerPriority"
-        android:layout_below="@+id/textViewPriority"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewPriority" />
 
 </RelativeLayout>

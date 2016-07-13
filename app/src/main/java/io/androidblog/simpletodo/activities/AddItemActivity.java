@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,7 +22,7 @@ import io.androidblog.simpletodo.R;
 import io.androidblog.simpletodo.SimpleTodoApplication;
 import io.androidblog.simpletodo.models.Category;
 import io.androidblog.simpletodo.models.Item;
-import io.androidblog.simpletodo.utils.Constants;
+import io.androidblog.simpletodo.models.Priority;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -36,7 +39,10 @@ public class AddItemActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private DatabaseReference categoriesReference;
-
+    ArrayList<Category> categoryList = new ArrayList<>();
+    ArrayList<Priority> priorityList = new ArrayList<>();
+    int categorySelectedId;
+    int prioritySelectedId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +61,8 @@ public class AddItemActivity extends AppCompatActivity {
 
     }
 
-    private void setPrioritySpinnerData() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Constants.PRIORITY_LIST);
-        spinnerPriority.setAdapter(adapter);
-    }
-
     private void setCategorySpinnerData() {
 
-        ArrayList<Category> categoryList = new ArrayList<>();
         categoryList.add(new Category(1, "Home", "home"));
         categoryList.add(new Category(2, "Travel", "travel"));
         categoryList.add(new Category(3, "Groceries", "groceries"));
@@ -72,17 +72,45 @@ public class AddItemActivity extends AppCompatActivity {
         ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
         spinnerCategory.setAdapter(adapter);
 
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                categorySelectedId = categoryList.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {}
+        });
+
     }
 
+    private void setPrioritySpinnerData() {
+
+        priorityList.add(new Priority(1, "Low", 1));
+        priorityList.add(new Priority(2, "Medium", 2));
+        priorityList.add(new Priority(3, "High", 3));
+
+        ArrayAdapter<Priority> adapter = new ArrayAdapter<Priority>(this, android.R.layout.simple_spinner_dropdown_item, priorityList);
+        spinnerPriority.setAdapter(adapter);
+
+        spinnerPriority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                prioritySelectedId = priorityList.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {}
+        });
+
+    }
 
     @OnClick(R.id.fab)
     public void onClick() {
-
         String txtTitle = editTextTitle.getText().toString().trim();
         String txtDesc = editTextNoteDesc.getText().toString().trim();
-
         if (!txtTitle.isEmpty()) {
-            Item toDoItem = new Item(txtTitle, txtDesc);
+            Item toDoItem = new Item(txtTitle, txtDesc, categorySelectedId, prioritySelectedId);
             databaseReference.push().setValue(toDoItem);
             finish();
         }
