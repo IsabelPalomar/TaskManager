@@ -1,12 +1,9 @@
 <resources>
-    <string name="app_name">SimpleTodo</string>
+    <string name="app_name">Task Manager</string>
     <string name="title_activity_add_item">Add new Item </string>
     <string name="addItem.message.item">Title</string>
     <string name="addItem.message.description">Description</string>
     <string name="addItem.label.category">Category</string>
     <string name="addItem.label.priority">Priority</string>
 
-    <string name="title_activity_launcher">LauncherActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
