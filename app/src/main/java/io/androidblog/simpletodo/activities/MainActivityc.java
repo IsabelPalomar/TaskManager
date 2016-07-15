@@ -25,9 +25,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.androidblog.simpletodo.R;
 import io.androidblog.simpletodo.SimpleTodoApplication;
-import io.androidblog.simpletodo.adapters.CategoriesRecyclerAdapter;
+import io.androidblog.simpletodo.adapters.ItemsRecyclerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityc extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleTodoApplication app = (SimpleTodoApplication) getApplicationContext();
 
-        databaseReference = app.getCategoriesReference();
-        adapter = new CategoriesRecyclerAdapter(R.layout.category, databaseReference);
+        databaseReference = app.getItemsReference();
+        adapter = new ItemsRecyclerAdapter(R.layout.item, databaseReference);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
                         String value = (String) av.getItemAtPosition(pos);
-                        Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+                        Intent i = new Intent(MainActivityc.this, EditItemActivity.class);
                         i.putExtra("position", String.valueOf(pos));
                         i.putExtra("value", value);
                         startActivityForResult(i, REQUEST_CODE);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void onClick() {
-        Intent i = new Intent(MainActivity.this, AddItemActivity.class);
+        Intent i = new Intent(MainActivityc.this, AddItemActivity.class);
         startActivity(i);
     }
 }

@@ -63,11 +63,11 @@ public class AddItemActivity extends AppCompatActivity {
 
     private void setCategorySpinnerData() {
 
-        categoryList.add(new Category(1, "Home", "home"));
-        categoryList.add(new Category(2, "Travel", "travel"));
-        categoryList.add(new Category(3, "Groceries", "groceries"));
-        categoryList.add(new Category(4, "Work", "work"));
-        categoryList.add(new Category(5, "General", "general"));
+        categoryList.add(new Category(1, "Home", ""));
+        categoryList.add(new Category(2, "Travel", ""));
+        categoryList.add(new Category(3, "Groceries", ""));
+        categoryList.add(new Category(4, "Work", ""));
+        categoryList.add(new Category(5, "General", ""));
 
         ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
         spinnerCategory.setAdapter(adapter);

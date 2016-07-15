@@ -12,4 +12,7 @@
     <color name="colorDivider">#B6B6B6</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="cardview_initial_background">#71C3DE</color>
+
 </resources>
