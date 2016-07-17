@@ -1,24 +1,32 @@
 package io.androidblog.simpletodo.models;
 
+import com.google.firebase.database.Exclude;
+
 public class Category {
 
-    int id;
+    @Exclude
+    String id;
     String name;
     String image;
 
     public Category(){}
 
-    public Category(int id, String name, String image) {
+    public Category(String id, String name, String image) {
         this.id = id;
         this.name = name;
         this.image = image;
     }
-
-    public int getId() {
-        return id;
+    public Category(String name, String image) {
+        this.name = name;
+        this.image = image;
     }
 
-    public void setId(int id) {
+    @Exclude
+    public String getId() {
+        return id;
+    }
+    @Exclude
+    public void setId(String id) {
         this.id = id;
     }
 

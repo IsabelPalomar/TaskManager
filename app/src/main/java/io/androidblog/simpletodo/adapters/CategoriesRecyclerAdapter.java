@@ -74,7 +74,8 @@ public class CategoriesRecyclerAdapter extends FirebaseRecyclerAdapter<Category,
             int position = getAdapterPosition();
             Category currentItem = (Category)getItem(position);
             DatabaseReference reference = getRef(position);
-            Log.d("Application", String.valueOf(currentItem.getId()));
+            Log.d("Application id", reference.getKey());
+
         }
 
         @Override

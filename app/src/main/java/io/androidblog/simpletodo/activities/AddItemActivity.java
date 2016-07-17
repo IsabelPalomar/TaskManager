@@ -41,7 +41,7 @@ public class AddItemActivity extends AppCompatActivity {
     private DatabaseReference categoriesReference;
     ArrayList<Category> categoryList = new ArrayList<>();
     ArrayList<Priority> priorityList = new ArrayList<>();
-    int categorySelectedId;
+    String categorySelectedId;
     int prioritySelectedId;
 
     @Override
@@ -63,11 +63,11 @@ public class AddItemActivity extends AppCompatActivity {
 
     private void setCategorySpinnerData() {
 
-        categoryList.add(new Category(1, "Home", ""));
-        categoryList.add(new Category(2, "Travel", ""));
-        categoryList.add(new Category(3, "Groceries", ""));
-        categoryList.add(new Category(4, "Work", ""));
-        categoryList.add(new Category(5, "General", ""));
+        categoryList.add(new Category("-KMtx7bZlH925l0Pa4tz", "Home", ""));
+        categoryList.add(new Category("-KMty4uuHAC_xHtyHpxb", "Travel", ""));
+        categoryList.add(new Category("-KMtyU9a4FLs6qa9bntH", "Groceries", ""));
+        categoryList.add(new Category("-KMtyX7LtbIMJQ_QVZSX", "Work", ""));
+        categoryList.add(new Category("-KMtyXh0X5bY8ZE9W5J7", "General", ""));
 
         ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
         spinnerCategory.setAdapter(adapter);

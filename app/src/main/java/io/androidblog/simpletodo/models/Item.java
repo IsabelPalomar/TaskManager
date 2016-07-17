@@ -6,7 +6,7 @@ public class Item {
 
     String item;
     String description;
-    int category;
+    String categoryId;
     int priority;
     boolean completed;
     HashMap<String, Object> dueDate;
@@ -14,10 +14,10 @@ public class Item {
 
     public Item(){ }
 
-    public Item(String item, String description, int category, int priority) {
+    public Item(String item, String description, String categoryId, int priority) {
         this.item = item;
         this.description = description;
-        this.category = category;
+        this.categoryId = categoryId;
         this.priority = priority;
         this.completed = false;
     }
@@ -38,12 +38,12 @@ public class Item {
         this.description = description;
     }
 
-    public int getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(int category) {
-        this.category = category;
+    public void setCategoryId(String category) {
+        this.categoryId = categoryId;
     }
 
     public int getPriority() {
