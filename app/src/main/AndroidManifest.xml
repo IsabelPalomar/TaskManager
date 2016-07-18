@@ -18,6 +18,7 @@
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,6 +28,10 @@
             android:label="@string/title_activity_add_item"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.EditItemActivity" />
+        <activity
+            android:name=".activities.ItemListActivity"
+            android:label="@string/title_activity_item_list"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

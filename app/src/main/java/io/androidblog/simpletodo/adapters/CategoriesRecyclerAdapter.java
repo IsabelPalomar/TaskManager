@@ -1,7 +1,8 @@
 package io.androidblog.simpletodo.adapters;
 
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,10 +18,14 @@ import com.google.firebase.database.DatabaseReference;
 import java.lang.reflect.Field;
 
 import io.androidblog.simpletodo.R;
+import io.androidblog.simpletodo.activities.ItemListActivity;
 import io.androidblog.simpletodo.models.Category;
+import io.androidblog.simpletodo.utils.Constants;
 
 public class CategoriesRecyclerAdapter extends FirebaseRecyclerAdapter<Category,
         CategoriesRecyclerAdapter.ItemViewHolder> {
+
+    Context context;
 
     public CategoriesRecyclerAdapter(int modelLayout, DatabaseReference ref) {
         super(Category.class, modelLayout, CategoriesRecyclerAdapter.ItemViewHolder.class, ref);
@@ -29,6 +34,7 @@ public class CategoriesRecyclerAdapter extends FirebaseRecyclerAdapter<Category,
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewGroup view = (ViewGroup) LayoutInflater.from(parent.getContext()).inflate(mModelLayout, parent, false);
+        context = parent.getContext();
         return new ItemViewHolder(view);
     }
 
@@ -71,18 +77,17 @@ public class CategoriesRecyclerAdapter extends FirebaseRecyclerAdapter<Category,
 
         @Override
         public void onClick(View view) {
-            int position = getAdapterPosition();
-            Category currentItem = (Category)getItem(position);
-            DatabaseReference reference = getRef(position);
-            Log.d("Application id", reference.getKey());
+
+            String categoryId = getRef(getAdapterPosition()).getKey();
+
+            Intent intent = new Intent(context, ItemListActivity.class);
+            intent.putExtra(Constants.KEY_CATEGORY_ID, categoryId);
+            context.startActivity(intent);
 
         }
 
         @Override
         public boolean onLongClick(View view) {
-            int position = getAdapterPosition();
-            DatabaseReference reference = getRef(position);
-            reference.removeValue();
             return true;
         }
     }
