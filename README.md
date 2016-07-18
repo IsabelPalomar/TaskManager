@@ -22,6 +22,7 @@ The following **additional** features are implemented:
 * [x] Android Folder Structure organized using [CodePath Guidelines](https://guides.codepath.com/android/Organizing-your-Source-Files)
 * [x] Using ButterKnife for field and method binding for Views. 
 * [x] Item and Category POJO's created
+* [x] List the items by category
 
 ## :video_camera: Video Walkthrough 
 
@@ -33,9 +34,9 @@ Using firebase:
 
 <img src='http://i.imgur.com/cRhMyNz.gif' title='Video Walkthrough Firebase' width='' alt='Video Walkthrough' />
 
-New screen to add Items:
+v2: List the items by category:
 
-<img src='http://i.imgur.com/ChZJrk2.gif' title='Video Walkthrough screen add items' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/fKo15NJ.gif' title='Video Walkthrough screen add items' width='' alt='Video Walkthrough' />
 
 GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
